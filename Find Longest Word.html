@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Longest Word</title>
+</head>
+<body>
+    <h1>Find Longest Word</h1>
+    <input type="text" id="input-str" placeholder="Enter a string">
+    <button id="find-btn">Find Longest Word</button>
+    <p id="result"></p>
+    <script>
+        function findLongestWord(str) {
+          // Split the string into an array of words
+          let words = str.split(' ');
+      
+          // Initialize the longest word and its length
+          let longestWord = '';
+          let maxLength = 0;
+      
+          // Iterate through the words
+          for (let i = 0; i < words.length; i++) {
+            // Check if the current word is longer than the longest word found so far
+            if (words[i].length > maxLength) {
+              longestWord = words[i];
+              maxLength = words[i].length;
+            }
+          }
+      
+          // Return the longest word
+          return longestWord;
+        }
+      
+        // Get the input field and button elements
+        let inputField = document.getElementById("input-str");
+        let findBtn = document.getElementById("find-btn");
+        let resultPara = document.getElementById("result");
+      
+        // Add an event listener to the button
+        findBtn.addEventListener("click", function() {
+          let str = inputField.value;
+          let longestWord = findLongestWord(str);
+          resultPara.textContent = "The longest word is: " + longestWord;
+        });
+    </script>
+</body>
+</html>

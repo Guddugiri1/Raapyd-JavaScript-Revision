@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicates</title>
+</head>
+<body>
+
+    <h2>Enter text with duplicates (separated by commas):</h2>
+    <input type="text" id="userInput" placeholder="Enter items">
+    <button onclick="processInput()">Remove Duplicates</button>
+
+    <h3>Output:</h3>
+    <p id="originalArray"></p>
+    <p id="resultArray"></p>
+
+    <script>
+        function removeDuplicates(arr) {
+            // Create an empty object to keep track of unique items
+            let unique = {};
+
+            // Transform each item to lowercase and use it as a key in the object
+            arr.forEach(item => {
+                unique[item.toLowerCase().trim()] = item.trim();
+            });
+
+            // Extract the values (unique items) from the object and convert back to array
+            let uniqueArray = Object.values(unique);
+            return uniqueArray;
+        }
+
+        function processInput() {
+            // Get the input value from the user
+            let inputArray = document.getElementById('userInput').value.split(',');
+
+            // Call removeDuplicates function to get the unique array
+            let result = removeDuplicates(inputArray);
+
+            // Display original and result arrays
+            document.getElementById('originalArray').textContent = "Original Array: " + inputArray.join(", ");
+            document.getElementById('resultArray').textContent = "Array with Duplicates Removed: " + result.join(", ");
+        }
+    </script>
+
+</body>
+</html>
